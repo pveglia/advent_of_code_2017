@@ -1,0 +1,8 @@
+document.body.innerText.split("\n")
+    .map(line => line.split("\t").map(n => parseInt(n)))
+    .filter(line => line.length > 1)
+    .map(line => line.map((e, i) => line.map((ei, ii) => i != ii ? [e, ei] : null)
+                                        .filter(i => i !== null)
+                                        .filter(i => i[0] % i[1] == 0))
+                     .filter(a => a.length == 1)[0][0].reduce((acc, i) => acc / i))
+    .reduce((sum, lineres) => sum + lineres)
